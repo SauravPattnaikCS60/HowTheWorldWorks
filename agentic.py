@@ -118,7 +118,7 @@ if __name__ == "__main__":
     "query": "",
     "article": "",
     "feedback": [],
-    "feedback_counter": 3,
+    "feedback_counter": 1,
     }
     result = app.invoke(initial_state)
     
