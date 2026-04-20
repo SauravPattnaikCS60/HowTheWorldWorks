@@ -1,0 +1,53 @@
+name: HowTheWorldWorks Update
+
+on:
+  schedule:
+    - cron: "30 3 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-digest-htww
+  cancel-in-progress: false
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.4"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run generator (agentic.py)
+        run: |
+          python agentic.py
+
+      - name: Commit and push changes (data/)
+        run: |
+          set -e
+
+          # Only commit if there are changes under data/
+          if git status --porcelain data | grep .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            git add data
+            git commit -m "Weekly digest update ($(date -u +"%Y-%m-%d"))"
+            git push
+          else
+            echo "No changes in data/. Nothing to commit."
+          fi

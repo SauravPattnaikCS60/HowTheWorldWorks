@@ -1,0 +1,97 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# =========================
+# Virtual environments
+# =========================
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# =========================
+# uv / pip / dependency artifacts
+# =========================
+.uv/
+requirements.lock
+pip-wheel-metadata/
+
+# =========================
+# Jupyter / IPython
+# =========================
+.ipynb_checkpoints/
+.profile_default/
+ipython_config.py
+
+# =========================
+# Logs & runtime files
+# =========================
+*.log
+logs/
+*.pid
+*.lock
+
+# =========================
+# OS / Editor noise
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Environment variables / secrets
+# =========================
+.env
+.env.*
+*.key
+*.pem
+*.secret
+
+# =========================
+# Data & model artifacts
+# =========================
+data/raw/
+data/interim/
+data/processed/
+datasets/
+models/
+checkpoints/
+*.pt
+*.pth
+*.onnx
+*.bin
+*.ckpt
+
+# =========================
+# Experiment outputs
+# =========================
+runs/
+wandb/
+mlruns/
+tensorboard/
+*.csv
+*.tsv
+
+# =========================
+# Temporary / scratch
+# =========================
+tmp/
+temp/
+scratch/
+*.tmp
+
+test.py
