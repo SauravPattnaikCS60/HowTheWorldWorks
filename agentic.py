@@ -46,7 +46,7 @@ def get_tavily_result(state:HTWW)->HTWW:
 def get_article(state:HTWW)->HTWW:
     if len(state['feedback']) > 0:
         feedback = state['feedback'][-1]
-        time.sleep(2)
+        time.sleep(5)
     else:
         feedback = ""
     prompt = get_article_writing_prompt(state['selected_question'],state['context'],feedback)
@@ -70,7 +70,7 @@ def should_continue(state: HTWW) -> str:
     if state["feedback_counter"] <= 0:
         return "end"
     
-    time.sleep(1)
+    time.sleep(5)
     return "rewrite"
     
 if __name__ == "__main__":
