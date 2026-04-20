@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import json
 
-load_dotenv()
+# load_dotenv()
 
 def parse_results(response):
     context = ""
@@ -13,7 +13,7 @@ def parse_results(response):
     return context        
 
 def call_tavily(query):
-    tavily_client = TavilyClient(api_key=os.environ.get('TAVILY'))
+    tavily_client = TavilyClient(api_key=os.getenv('TAVILY'))
     query = "Why is petrodollar so important?"
     response = tavily_client.search(query, search_depth='advanced',max_results=3,chunks_per_source=3)
     # json.dump(response, open('tavily_response.json','w'))

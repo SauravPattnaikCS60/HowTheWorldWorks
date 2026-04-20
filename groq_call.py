@@ -2,12 +2,12 @@ import os
 from dotenv import load_dotenv
 from groq import Groq
 
-load_dotenv()
+# load_dotenv()
 
 def run_groq_api(prompt, model="openai/gpt-oss-20b"):
 
     client = Groq(
-        api_key=os.environ.get("GROQ_API"),
+        api_key=os.getenv("GROQ_API"),
     )
 
     chat_completion = client.chat.completions.create(
